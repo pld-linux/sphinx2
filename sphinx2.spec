@@ -33,11 +33,11 @@ Requires:	%{name} = %{version}
 %description devel -l pl
 Pliki nag³ówkowe %{name}.
 
-%prep 
+%prep
 %setup -q
 
 %build
-%configure 
+%configure
 %{__make}
 
 %install
