@@ -1,13 +1,17 @@
 Summary:	Speech recognitnion engine
 Summary(pl):	System rozpoznawania mowy
 Name:		sphinx2
-Version:	0.3
-Release:	2
+Version:	0.4
+Release:	1
 License:	GPL
 Group:		Applications/Communications
 Source0:	ftp://ftp.sourceforge.net/pub/sourceforge/cmusphinx/%{name}-%{version}.tar.gz
 Patch0:		%{name}-wid.patch
+Patch1:		%{name}-acam.patch
 URL:		http://www.speech.cs.cmu.edu/sphinx/
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -49,9 +53,14 @@ Statyczne wersje bibliotek sphinx2.
 %prep
 %setup -q
 %patch0 -p1 
+%patch1 -p1
 
 %build
-%configure2_13
+%{__libtoolize}
+%{__aclocal}
+%{__autoconf}
+%{__automake}
+%configure
 %{__make}
 
 %install

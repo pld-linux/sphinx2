@@ -1,0 +1,53 @@
+--- sphinx2-0.4/configure.in.orig	Thu Dec 13 22:15:17 2001
++++ sphinx2-0.4/configure.in	Thu Jan 30 22:45:39 2003
+@@ -29,10 +29,10 @@
+ ad_libs=""
+ 
+ AC_ARG_WITH(alsa, [use ALSA library for sound I/O],
+-	    AC_CHECK_HEADER(sys/asoundlib.h,
++	    [AC_CHECK_HEADER(sys/asoundlib.h,
+ 		[ad_libs="-lasound"; ad_files="ad_alsa.lo";
+ 		 ad_backend="AD_BACKEND_ALSA"],
+-		AC_ERROR(ALSA header file <sys/asoundlib.h> not found!)))
++		AC_ERROR(ALSA header file <sys/asoundlib.h> not found!))])
+ 
+ if test "x$ad_files" = "x"; then
+ 	case $host in
+@@ -86,7 +86,6 @@
+ AC_SUBST(ad_files)
+ AC_SUBST(ad_libs)
+ AC_SUBST(ad_backend)
+-AC_SUBST(LIBOBJS)
+ AC_SUBST(PERL)
+ AC_SUBST(CSH)
+ 
+--- sphinx2-0.4/src/examples/Makefile.am.orig	Fri Dec  7 20:10:34 2001
++++ sphinx2-0.4/src/examples/Makefile.am	Thu Jan 30 22:47:42 2003
+@@ -13,7 +13,8 @@
+ 
+ EXTRA_DIST = README \
+ 	README.bin \
+-	cdcn_test
++	cdcn_test \
++	clicore.h srvcore.h
+ 
+ sphinx2_continuous_SOURCES =  tty-continuous.c
+ 
+@@ -43,8 +44,6 @@
+ 
+ #cdcn_test_SOURCES = cdcn_test.c
+ 
+-EXTRA_DIST = clicore.h  srvcore.h
+-
+ LDADD = $(top_builddir)/src/libsphinx2/libsphinx2.la \
+ 	$(top_builddir)/src/libsphinx2fe/libsphinx2fe.la \
+ 	$(top_builddir)/src/libsphinx2ad/libsphinx2ad.la \
+--- sphinx2-0.4/src/libsphinx2ad/Makefile.am.orig	Fri Dec  7 21:03:19 2001
++++ sphinx2-0.4/src/libsphinx2ad/Makefile.am	Thu Jan 30 22:47:12 2003
+@@ -24,6 +24,4 @@
+ 
+ libsphinx2ad_la_LIBADD = @ad_files@ @ad_libs@
+ 
+-libsphinx2ad_la_LDFLAGS = -version-info 0:4:0
+-
+ INCLUDES = -I$(top_srcdir)/include -I$(top_builddir)/include
