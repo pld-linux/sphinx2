@@ -5,8 +5,6 @@ Version:	0.3
 Release:	1
 License:	GPL
 Group:		Applications/Communications
-Group(de):	Applikationen/Kommunikation
-Group(pl):	Aplikacje/Komunikacja
 Source0:	http://prdownloads.sourceforge.net/cmusphinx/%{name}-%{version}.tar.gz
 URL:		http://www.speech.cs.cmu.edu/sphinx/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -27,13 +25,6 @@ PodЁ╠cz mikrofon, uruchom sphinx2-simple i testuj!
 Summary:	%{name} header files
 Summary(pl):	Pliki nagЁСwkowe %{name}
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(ru):	Разработка/Библиотеки
-Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name} = %{version}
 
 %description devel
