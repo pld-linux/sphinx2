@@ -33,11 +33,23 @@ Requires:	%{name} = %{version}
 %description devel -l pl
 Pliki nag³ówkowe %{name}.
 
+%package static
+Summary:	Static sphinx2 libraries
+Summary(pl):	Biblioteki statyczne sphinx2
+Group:		Development/Libraries
+Requires:	%{name}-devel = %{version}
+
+%description static
+Static version of sphinx2 libraries.
+
+%description static -l pl
+Statyczne wersje bibliotek sphinx2.
+
 %prep
 %setup -q
 
 %build
-%configure
+%configure2_13
 %{__make}
 
 %install
@@ -48,8 +60,6 @@ rm -rf $RPM_BUILD_ROOT
 # hmm, name may conflict
 rm -f $RPM_BUILD_ROOT%{_bindir}/batch.csh
 
-gzip -9nf README
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -58,7 +68,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc *.gz doc
+%doc README doc
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_libdir}/*.so.*.*
 %{_datadir}/%{name}
@@ -66,4 +76,9 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %{_includedir}/*
-%{_libdir}/*.so
+%attr(755,root,root) %{_libdir}/*.so
+%attr(755,root,root) %{_libdir}/*.la
+
+%files static
+%defattr(644,root,root,755)
+%{_libdir}/*.a
