@@ -3,7 +3,7 @@ Summary(pl):	System rozpoznawania mowy
 Name:		sphinx2
 Version:	0.4
 Release:	1
-License:	GPL
+License:	BSD-like
 Group:		Applications/Communications
 Source0:	http://dl.sourceforge.net/cmusphinx/%{name}-%{version}.tar.gz
 # Source0-md5:	e6e3b382613e7b253ef9cea726840a5a
@@ -67,7 +67,8 @@ Statyczne wersje bibliotek sphinx2.
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 # hmm, name may conflict
 rm -f $RPM_BUILD_ROOT%{_bindir}/batch.csh
@@ -87,9 +88,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%{_includedir}/*
 %attr(755,root,root) %{_libdir}/*.so
 %{_libdir}/*.la
+%{_includedir}/*
 
 %files static
 %defattr(644,root,root,755)
