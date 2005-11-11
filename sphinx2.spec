@@ -8,7 +8,6 @@ Group:		Applications/Communications
 Source0:	http://dl.sourceforge.net/cmusphinx/%{name}-%{version}.tar.gz
 # Source0-md5:	5fcd8e3b6c21334866f07c601f36b37e
 Patch0:		%{name}-wid.patch
-#Patch1:		%{name}-acam.patch
 URL:		http://www.speech.cs.cmu.edu/sphinx/
 BuildRequires:	autoconf
 BuildRequires:	automake
