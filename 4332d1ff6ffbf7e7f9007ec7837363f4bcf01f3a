@@ -1,0 +1,2 @@
+- new %doc, use %configure2_13
+- added static subpackage and *.la files to -devel
