@@ -30,7 +30,7 @@ Pod³±cz mikrofon, uruchom sphinx2-simple i testuj!
 Summary:	%{name} header files
 Summary(pl):	Pliki nag³ówkowe %{name}
 Group:		Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 
 %description devel
 %{name} header files.
@@ -42,7 +42,7 @@ Pliki nag³ówkowe %{name}.
 Summary:	Static sphinx2 libraries
 Summary(pl):	Biblioteki statyczne sphinx2
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static version of sphinx2 libraries.
