@@ -2,7 +2,7 @@ Summary:	Speech recognitnion engine
 Summary(pl.UTF-8):	System rozpoznawania mowy
 Name:		sphinx2
 Version:	0.6
-Release:	1
+Release:	2
 License:	BSD-like
 Group:		Applications/Communications
 Source0:	http://dl.sourceforge.net/cmusphinx/%{name}-%{version}.tar.gz
@@ -82,6 +82,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc README doc
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_libdir}/*.so.*.*
+%ghost %{_libdir}/*.so.0
 %{_datadir}/%{name}
 
 %files devel
