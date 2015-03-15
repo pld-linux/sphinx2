@@ -1,0 +1,42 @@
+--- sphinx2-0.6/src/libsphinx2/Makefile.am~	2005-10-13 20:31:13.000000000 +0200
++++ sphinx2-0.6/src/libsphinx2/Makefile.am	2015-03-15 21:53:45.643774536 +0100
+@@ -88,7 +88,7 @@
+ 	word_fsg.c
+ 
+ 
+-# libsphinx2_la_LIBADD = -lc -lm $(top_srcdir)/src/libsphinx2fe/libsphinx2fe.la
++libsphinx2_la_LIBADD = -lm $(top_srcdir)/src/libsphinx2fe/libsphinx2fe.la
+ 
+ # hjf@cs.brown.edu - Added for Solaris build
+ # LDADD = -L/usr/demo/SOUND/lib/ -laudio
+--- sphinx2-0.6/src/libsphinx2ad/Makefile.am~	2005-10-13 20:31:18.000000000 +0200
++++ sphinx2-0.6/src/libsphinx2ad/Makefile.am	2015-03-15 21:54:09.890441367 +0100
+@@ -22,6 +22,6 @@
+ 
+ libsphinx2ad_la_DEPENDENCIES = @ad_files@
+ 
+-libsphinx2ad_la_LIBADD = @ad_files@ @ad_libs@
++libsphinx2ad_la_LIBADD = -lm @ad_files@ @ad_libs@ $(top_srcdir)/src/libsphinx2/libsphinx2.la
+ 
+ INCLUDES = -I$(top_srcdir)/include -I$(top_builddir)/include
+--- sphinx2-0.6/src/libsphinx2fe/Makefile.am~	2005-10-13 20:31:18.000000000 +0200
++++ sphinx2-0.6/src/libsphinx2fe/Makefile.am	2015-03-15 21:54:37.323774887 +0100
+@@ -8,6 +8,8 @@
+ 	fe_interface.c \
+ 	fe_sigproc.c
+ 
++libsphinx2fe_la_LIBADD = -lm
++
+ noinst_HEADERS = fe_internal.h
+ 
+ INCLUDES = -I$(top_srcdir)/include -I$(top_builddir)/include
+--- sphinx2-0.6/src/Makefile.am~	2000-12-13 00:01:42.000000000 +0100
++++ sphinx2-0.6/src/Makefile.am	2015-03-15 22:01:55.940444527 +0100
+@@ -1,5 +1,5 @@
+-SUBDIRS = libsphinx2 \
+-	libsphinx2fe \
++SUBDIRS = libsphinx2fe \
++	libsphinx2 \
+ 	libsphinx2ad \
+ 	examples
+ 
