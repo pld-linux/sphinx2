@@ -1,15 +1,15 @@
-Summary:	Speech recognitnion engine
-Summary(pl.UTF-8):	System rozpoznawania mowy
+Summary:	CMU Sphinx2 - Speech recognitnion engine
+Summary(pl.UTF-8):	CMU Sphinx2 - System rozpoznawania mowy
 Name:		sphinx2
 Version:	0.6
 Release:	3
 License:	BSD-like
 Group:		Applications/Communications
-Source0:	http://dl.sourceforge.net/cmusphinx/%{name}-%{version}.tar.gz
+Source0:	http://downloads.sourceforge.net/cmusphinx/%{name}-%{version}.tar.gz
 # Source0-md5:	5fcd8e3b6c21334866f07c601f36b37e
 Patch0:		%{name}-wid.patch
 Patch1:		link.patch
-URL:		http://www.speech.cs.cmu.edu/sphinx/
+URL:		https://cmusphinx.github.io/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libtool
@@ -28,28 +28,28 @@ słownikiem, pochodzący z Carnegie Mellon University.
 Podłącz mikrofon, uruchom sphinx2-simple i testuj!
 
 %package devel
-Summary:	%{name} header files
-Summary(pl.UTF-8):	Pliki nagłówkowe %{name}
+Summary:	CMU Sphinx2 header files
+Summary(pl.UTF-8):	Pliki nagłówkowe bibliotek CMU Sphinx2
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description devel
-%{name} header files.
+CMU Sphinx2 header files.
 
 %description devel -l pl.UTF-8
-Pliki nagłówkowe %{name}.
+Pliki nagłówkowe bibliotek CMU Sphinx2.
 
 %package static
-Summary:	Static sphinx2 libraries
-Summary(pl.UTF-8):	Biblioteki statyczne sphinx2
+Summary:	Static CMU Sphinx2 libraries
+Summary(pl.UTF-8):	Biblioteki statyczne CMU Sphinx2
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
-Static version of sphinx2 libraries.
+Static version of CMU Sphinx2 libraries.
 
 %description static -l pl.UTF-8
-Statyczne wersje bibliotek sphinx2.
+Statyczne wersje bibliotek CMU Sphinx2.
 
 %prep
 %setup -q
@@ -82,17 +82,36 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc README doc
-%attr(755,root,root) %{_bindir}/*
-%attr(755,root,root) %{_libdir}/*.so.*.*
-%ghost %{_libdir}/*.so.0
+%attr(755,root,root) %{_bindir}/adpow
+%attr(755,root,root) %{_bindir}/adrec
+%attr(755,root,root) %{_bindir}/cdcn_test
+%attr(755,root,root) %{_bindir}/cont_adseg
+%attr(755,root,root) %{_bindir}/cont_fileseg
+%attr(755,root,root) %{_bindir}/lm3g2dmp
+%attr(755,root,root) %{_bindir}/lm_fsg_test*
+%attr(755,root,root) %{_bindir}/pdf32to8b
+%attr(755,root,root) %{_bindir}/raw2cep
+%attr(755,root,root) %{_bindir}/sphinx2-*
+%attr(755,root,root) %{_libdir}/libsphinx2.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libsphinx2.so.0
+%attr(755,root,root) %{_libdir}/libsphinx2ad.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libsphinx2ad.so.0
+%attr(755,root,root) %{_libdir}/libsphinx2fe.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libsphinx2fe.so.0
 %{_datadir}/%{name}
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/*.so
-%{_libdir}/*.la
-%{_includedir}/*
+%attr(755,root,root) %{_libdir}/libsphinx2.so
+%attr(755,root,root) %{_libdir}/libsphinx2ad.so
+%attr(755,root,root) %{_libdir}/libsphinx2fe.so
+%{_libdir}/libsphinx2.la
+%{_libdir}/libsphinx2ad.la
+%{_libdir}/libsphinx2fe.la
+%{_includedir}/sphinx2
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/*.a
+%{_libdir}/libsphinx2.a
+%{_libdir}/libsphinx2ad.a
+%{_libdir}/libsphinx2fe.a
